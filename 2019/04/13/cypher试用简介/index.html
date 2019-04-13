@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        图数据库分析｜undefined
+        Cypher使用简介｜undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2019/04/12/图数据库分析/">
+    <link rel="canonical" href="http://yoursite.com/2019/04/13/cypher试用简介/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -136,21 +136,21 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>图数据库分析</h1>
+                    <h1>Cypher使用简介</h1>
                     
                     <span class="meta">
                          作者 江湖郎中
                         <span>
-                          日期 2019-04-12
+                          日期 2019-04-13
                          </span>
                     </span>
                     <div class="tags text-center">
                         
                         <a class="tag" href="/tags/#neo4j" title="neo4j">neo4j</a>
                         
-                        <a class="tag" href="/tags/#知识图谱" title="知识图谱">知识图谱</a>
+                        <a class="tag" href="/tags/#Cypher" title="Cypher">Cypher</a>
                         
-                        <a class="tag" href="/tags/#图数据库" title="图数据库">图数据库</a>
+                        <a class="tag" href="/tags/#知识图谱" title="知识图谱">知识图谱</a>
                         
                     </div>
                 </div>
@@ -159,7 +159,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            图数据库分析
+            Cypher使用简介
         </span>
     </div>
 </header>
@@ -170,44 +170,45 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>图数据库作为一个相对较新的数据库形式，他主要用来解决什么问题，我们应该在什么情况下去用它，跟关系行数据库、非关系型数据库有什么区别，等等，相信刚接触的人都有一些疑问。<br>neo4j官方的一个小册子《Graph_Databases_for_Beginners.pdf》就针对这些问题展开了一些论述，把其中一些内容记录了下来。</p>
-<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><ol>
-<li><p>为什么需要开始关注图数据库</p>
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Cypher, The Graph Query Language<br>The Standard Query Language for Graph Database Technology</p>
+<p>这是官方给出的定义，简单来说就是 图数据库的查询语言，一种图数据库标准化查询语言的技术<br>理解起来比较容易，他从<code>SPARQL</code>中在概念上获得了很多的启发。<br><code>Cypher</code>描述节点、关系、属性上面像<code>ASCII</code>码一样通俗易懂，它使查询变得简单，由于他的逻辑非常清晰，使得在维护应用的时候也变得很简单</p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><h3 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h3><p>增加、创建是我们用到的第一个命令，在neo4j中，节点不存在名字的概念，更多的是以label的形式来表达，一个节点可以有多个label，用来从不同维度来描述这个节点</p>
 <ul>
-<li>性能，数据容量在接下来的时间里会得到大幅度的增长，而其中数据之间的关系的增长更是迅速。就传统关系型数据来讲一般通过<code>join</code>操作来继续数据关系的处理，但是随着关系深度的增加查询性能将会越来越难处理，而图形数据库在关系大幅增加的情况下，查询性能并不会大幅增加。</li>
-<li>多样性，通过图形数据库，你的数据结构的变化可以及时的追上业务的变化，它不需要在开始之前花大量的时间进行建模，可以很方便的跟着业务发生变化</li>
-<li>敏捷</li>
+<li><code>CREATE (n:$label {name: $value})</code> 创建一个节点，指定一个标签<code>$label</code> 并且赋予指定属性属性</li>
+<li><code>CREATE (n)-[r:KNOWS]-&gt;(m)</code> 创建一个关系，并指定了类型和方向，以及将其绑定到一个变量<code>r</code>上</li>
 </ul>
-</li>
-<li><p>什么是图形数据库</p>
-<p> 跟传统的关系行数据库相比，图形数据库由两个关键元素组成，<code>node</code>和<code>relationship</code>，一个<code>node</code>代表了一个entity也就是一个实体，而一个<code>relationship</code>则表达了两个节点间是如何联系在一起的</p>
-</li>
-<li><p>图形数据库工作机制</p>
-<ol>
-<li>native图存储，不想其他的解决方案，存储图是通过关系行数据库来间接实现，而是直接以图native的形式进行存储，完全依照图的特性去设计，充分发挥图模型的特征</li>
-<li>图处理引擎，核心观念是<code>index-free adjacency</code>,局部索引的概念</li>
-</ol>
-</li>
-<li><p>为什么关系是很重要的</p>
-<p> 传统数据库在结构化存储方面已经做的很好了，但是在处理关系上面有这先天的不足，在关系层次特别深的情况下效率极差。这也是和图数据库最大的差别，图数据库主要关注的点就是关系<code>relationship</code></p>
-</li>
-<li><p>其他</p>
-<p> 文本里面还提到了查询语言的重要性、图的遍历形式以及常见的几类数据库的比较，有兴趣的可以自行翻阅了。</p>
-</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">比如，我创建一个类型为`互联网`的节点,有个属性ename，值为Internet,就可以按照下面的语句去写</span><br><span class="line">CREATE (n:互联网 &#123;ename:&apos;Internet&apos;&#125;)</span><br><span class="line"></span><br><span class="line">这里面的`n`只是变量，方便在复杂语句中引用使用，如果用不到可以不写，那么就可以简写为</span><br><span class="line"></span><br><span class="line">CREATE(:互联网 &#123;ename:&apos;Internet&apos;&#125; )</span><br><span class="line"></span><br><span class="line">又比如，我想创建一个有`即时通讯`的标签，同时他有一个属性 ename，值为 IM，我就可以这样写</span><br><span class="line"></span><br><span class="line">CREATE (n:即时通讯 &#123;ename:&apos;IM&apos;&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果想创建两个类型的节点，一个是互联网，一个是即时通讯，同时我想建立一个关系`即时通讯属于互联网`，那么应该怎么写呢</span><br><span class="line"></span><br><span class="line">Create (:即时通讯)-[r:belong]-&gt;(:互联网)</span><br></pre></td></tr></table></figure>
+<p>如图所示<br><img src="https://note.youdao.com/yws/public/resource/c537253ff87f0a68329d8b25970e10e9/xmlnote/50D113B920B04B49999B586B76188079/15859" alt="image"></p>
+<h3 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h3><p>有了数据，就要去使用，使用的前提要能拿到这些数据，就是需要进行query</p>
+<ul>
+<li><code>MATCH (n) RETURN n</code> 查询节点，如果没有输入查询条件则是查询所有节点</li>
+<li><code>match(n:互联网) return n</code> 查询带有互联网标签的节点</li>
+<li><code>match(n {ename:&#39;IM&#39;}) return n;</code> 查询带有ename属性，并且值为IM的节点</li>
+<li><code>match(n) where n.ename=&#39;IM&#39; return n</code> 查询带有ename属性，并且值为IM的节点</li>
+<li><code>match (m:即时通讯)-[r:belong]-&gt;(:互联网) return m;</code> 查询满足某种关系的节点</li>
+</ul>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>更新是频繁使用的一个操作，我们会去更新节点属性，我们会去更新标签、关系等等，通常是先查询出来，然后再赋值，如果原来没有就新增</p>
+<ul>
+<li><code>match(n:即时通讯) set n.sub=&#39;qq&#39; return n;</code>  新增一个节点的属性</li>
+<li><code>match(n:即时通讯) set n:聊天 return n;</code> 新增一个标签</li>
+</ul>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><p>删除也是必不可少的操作</p>
+<ul>
+<li><code>MATCH (n:Person { name: &#39;UNKNOWN&#39; }) DELETE n</code> 删除匹配到的节点</li>
+<li><code>MATCH (n { name: &#39;Andy&#39; }) DETACH DELETE n</code> 删除节点及关联的关系，重点是<code>DETACH DELETE</code></li>
+<li><code>MATCH (n { name: &#39;Andy&#39; })-[r:KNOWS]-&gt;() DELETE r</code> 只删除关系</li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>上面简单记录了Cypher对于增删改查的使用，当然Cyper的能力远不止上面这些，还有很多复杂的功能，不过万变不离其宗，理解了这些基础操作，那么在这些基础进行复杂的查询、操作就会有迹可循了。以上内容参考<a href="https://neo4j.com/docs/cypher-manual/3.5" target="_blank" rel="noopener">https://neo4j.com/docs/cypher-manual/3.5</a> , 里面有更详细的介绍。</p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2019/04/13/cypher试用简介/" data-toggle="tooltip" data-placement="top" title="Cypher使用简介">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2019/04/12/neo4j安装/" data-toggle="tooltip" data-placement="top" title="neo4j安装">Next Post &rarr;</a>
+                        <a href="/2019/04/12/图数据库分析/" data-toggle="tooltip" data-placement="top" title="图数据库分析">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -226,7 +227,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要内容"><span class="toc-text">主要内容</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用说明"><span class="toc-text">使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create"><span class="toc-text">Create</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Query"><span class="toc-text">Query</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Update"><span class="toc-text">Update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delete"><span class="toc-text">Delete</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后记"><span class="toc-text">后记</span></a></li></ol>
                 </div>
             </div>
         </div>

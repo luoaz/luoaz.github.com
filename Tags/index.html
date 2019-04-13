@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        江湖郎中的博客，从事互联网行业，立志点点滴滴解决遇到的疑难杂症
+        Tags｜江湖郎中的博客，从事互联网行业，立志点点滴滴解决遇到的疑难杂症
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/archives/2019/">
+    <link rel="canonical" href="http://yoursite.com/Tags/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -123,210 +123,177 @@
 </script>
 
 <!-- Main Content -->
-
+<style>
+    .intro-header .site-heading {
+        margin: 50px;
+    }
+    
+    header.intro-header {
+        background-image: url('')
+    }
+    
+</style>
 
 <!-- Page Header -->
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
-    <div class="row">
-        <header class="intro-header">
-            <div class="container">
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading text-center">
-                    <div class="about-me">
-                        <!--移动端头部显示-->
-                        <img src="/image/header.jpg">
-                        <h5><a href="/about/">江湖郎中</a></h5>
-                        <p>创造价值，赢得尊重</p>
-                    </div>
+                    <h1>Tags</h1>
+                    <span class="subheading">江湖郎中点滴</span>
                 </div>
             </div>
-        </header>
+        </div>
     </div>
-</div>
+</header>
+
 <!-- Main Content -->
-<div class="container custom-haojen-container">
-    <!-- Post Container -->
+<div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
-            <!-- Main Content -->
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- 标签云 -->
+            <div id="tag_cloud" class="tags">
+                
+                <a href="#neo4j" title="neo4j" rel="4">neo4j</a>
+                
+                <a href="#Cypher" title="Cypher" rel="1">Cypher</a>
+                
+                <a href="#知识图谱" title="知识图谱" rel="4">知识图谱</a>
+                
+                <a href="#图数据库" title="图数据库" rel="1">图数据库</a>
+                
+            </div>
 
-
-
-<div class="post-preview " style="background-image: url('')">
-    <a href="/2019/04/13/cypher试用简介/">
-        <h2 class="post-title">
-            Cypher使用简介
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-13
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                概述Cypher, The Graph Query LanguageThe Standard Query Language for Graph Database Technology
-这是官方给出的定义，简单来说就是 图数据库的查询语言，一种图数据库标准化查询语言的技术理解起来比较容易，他从SP..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview " style="background-image: url('')">
-    <a href="/2019/04/12/图数据库分析/">
-        <h2 class="post-title">
-            图数据库分析
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-12
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                前言图数据库作为一个相对较新的数据库形式，他主要用来解决什么问题，我们应该在什么情况下去用它，跟关系行数据库、非关系型数据库有什么区别，等等，相信刚接触的人都有一些疑问。neo4j官方的一个小册子《Graph_Databases_for_Beginners.pdf》就针对这些问题展开了一些论述，..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview " style="background-image: url('')">
-    <a href="/2019/04/12/neo4j安装/">
-        <h2 class="post-title">
-            neo4j安装
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-12
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                前言这篇文章进行neo4j的服务器安装
-
-环境 centos-6.5
-jdk1.8
-
-下载地址https://neo4j.com/download-center/#releases
-这次我们选择的是Neo4j Community Edition 3.5.4版本
-开始安装创建neo4j的Linux..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-<div class="post-preview " style="background-image: url('')">
-    <a href="/2019/04/11/neo4j初窥/">
-        <h2 class="post-title">
-            neo4j初窥
-        </h2>
-        <p class="post-meta">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-11
-        </p>
-        
-        <div class="post-content-preview">
-            <p>
-                概述Neo4j是一个世界领先的开源图形数据库。 它是由使用Java语言完全开发的。有如下特点
-
-开源
-它遵循属性图数据模型
-它通过使用Apache Lucence支持索引
-它支持UNIQUE约束
-它它包含一个用于执行CQL命令的UI：Neo4j数据浏览器
-它支持完整的ACID（原子性，一致性，隔..
-            </p>
-        </div>
-    </a>
-
-</div>
-
-<hr>
-
-
-
-
-<!-- 翻页 pager -->
-
-<ul class="pager">
-    
-    
-</ul>
-
-
-        </div>
-        <!-- Sidebar Container -->
-        <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-
-            <!-- About Me -->
-            <section class="visible-md visible-lg" style="padding: 0 18px">
-                <div class="short-about">
-                    <!--侧边栏头像-->
-                    
-                    <img src="/image/header.jpg">
-                    
-                    <h5><a href="/about/">江湖郎中</a></h5>
-                    
-                    <p>创造价值，赢得尊重</p>
-                    
-                    <hr>
-                    <!-- SNS Link 社交 -->
-                    <ul class="list-inline">
-                        
-                        
-                        
-
-                        
-
-                        
-
-                        
-
-                        
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Featured Tags  标签 -->
+            <!-- 标签列表 -->
             
-            <section>
-                <div class="tags">
-                    
-                    
-                    <a href="/tags/#neo4j" title="neo4j" rel="4">neo4j</a>
-                    
-                    
-                    
-                    <a href="/tags/#Cypher" title="Cypher" rel="1">Cypher</a>
-                    
-                    
-                    
-                    <a href="/tags/#知识图谱" title="知识图谱" rel="4">知识图谱</a>
-                    
-                    
-                    
-                    <a href="/tags/#图数据库" title="图数据库" rel="1">图数据库</a>
-                    
-                    
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="neo4j">
+                    <span class="tag-text">neo4j</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/13/cypher试用简介/">
+                        <h2 class="post-title">
+                            Cypher使用简介
+                        </h2>
+                        
+                    </a>
                 </div>
-            </section>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/11/neo4j初窥/">
+                        <h2 class="post-title">
+                            neo4j初窥
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/12/neo4j安装/">
+                        <h2 class="post-title">
+                            neo4j安装
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/12/图数据库分析/">
+                        <h2 class="post-title">
+                            图数据库分析
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
             
-
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Cypher">
+                    <span class="tag-text">Cypher</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/13/cypher试用简介/">
+                        <h2 class="post-title">
+                            Cypher使用简介
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="知识图谱">
+                    <span class="tag-text">知识图谱</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/13/cypher试用简介/">
+                        <h2 class="post-title">
+                            Cypher使用简介
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/11/neo4j初窥/">
+                        <h2 class="post-title">
+                            neo4j初窥
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/12/neo4j安装/">
+                        <h2 class="post-title">
+                            neo4j安装
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/12/图数据库分析/">
+                        <h2 class="post-title">
+                            图数据库分析
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="图数据库">
+                    <span class="tag-text">图数据库</span>
+                </span>
+                
+                <div class="post-preview">
+                    <a href="/2019/04/12/图数据库分析/">
+                        <h2 class="post-title">
+                            图数据库分析
+                        </h2>
+                        
+                    </a>
+                </div>
+                <hr>
+                
+            </div>
             
 
         </div>
